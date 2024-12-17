@@ -25,3 +25,19 @@ docker-compose --version
 
 ## **2. Quick Start**
    
+Clone the dockerfile repository
+```
+git clone https://github.com/morph-l2/run-morph-node.git
+```
+
+Run the following command
+```
+cd morph-node
+make run-node
+```
+
+The command `make run-node` takes the `../mainnet` as your node's Home directory by default. There will be two folders in the Home directory named `geth-data` and `node-data`, serving as data directories for the execution client and consensus client of the morph ndoe, respectively.
+
+This command will also generate the `secret-jwt.txt` file under Home directory for the authentication during RPC calls between the execution client and consensus client.
+
+Source : https://docs.morphl2.io/docs/build-on-morph/developer-resources/node-operation/full-node/run-in-docker#quick-start
