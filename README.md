@@ -32,7 +32,7 @@ git clone https://github.com/morph-l2/run-morph-node.git
 
 Run the following command
 ```
-cd morph-node
+cd run-morph-node/morph-node
 make run-node
 ```
 
