@@ -3,7 +3,14 @@ This guide will help you start a full node running in the docker container using
 
 ## **1. Install Dependencies**
 
-Install Docker
+Update & Install Packages :
+
+```
+sudo apt update & sudo apt upgrade -y
+sudo apt install ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4 -y
+```
+
+Install Docker :
 
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -15,7 +22,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 docker version
 ```
 
-Install Docker-Compose
+Install Docker-Compose :
 
 ```
 VER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d '"' -f 4)
