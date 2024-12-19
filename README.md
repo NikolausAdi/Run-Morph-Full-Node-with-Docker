@@ -102,7 +102,7 @@ docker compose up --build
 After the Docker containers have been successfully started, you can navigate to the morph-node directory and run the following command to start the validator node:
 
 ```
-cd run-morph-node/morph-node
+cd morph-node
 make run-node
 ```
 
