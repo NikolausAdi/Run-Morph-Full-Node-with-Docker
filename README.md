@@ -43,7 +43,7 @@ git clone https://github.com/morph-l2/run-morph-node.git
 Run the following command
 ```
 cd run-morph-node/morph-node
-make run-validator
+make run-morph
 ```
 
 The command `make run-node` takes the `../mainnet` as your node's Home directory by default. There will be two folders in the Home directory named `geth-data` and `node-data`, serving as data directories for the execution client and consensus client of the morph ndoe, respectively.
