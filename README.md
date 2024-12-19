@@ -42,8 +42,11 @@ git clone https://github.com/morph-l2/run-morph-node.git
 
 Run the following command
 ```
-cd run-morph-node/morph-node
-docker-compose up --build
+cd run-morph-node
+```
+```
+cd morph-node
+make run-node
 ```
 
 The command `make run-node` takes the `../mainnet` as your node's Home directory by default. There will be two folders in the Home directory named `geth-data` and `node-data`, serving as data directories for the execution client and consensus client of the morph ndoe, respectively.
@@ -65,7 +68,18 @@ morph-node  | exec /usr/local/bin/morphnode: exec format error
 It means that the server you are using is not compatible with the ARM64 architecture of the Docker image. To resolve this, you need to enable emulation for ARM64 using QEMU.
 
 #### **Steps to Fix the Issue**
-**1. Install QEMU**
+
+**1.Clean Up Local Configuration Files**
+Navigate to the directory:
+```
+cd ~
+```
+delete the entire setup:
+```
+rm -rf ~/run-morph-node
+```
+
+**2. Install QEMU**
 To enable multi-platform emulation, follow these steps:
 
 ```
@@ -74,7 +88,7 @@ sudo apt install qemu qemu-user-static
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 ```
 
-**2. Enable Docker Buildx**
+**3. Enable Docker Buildx**
 Docker Buildx allows you to run ARM64 images on other platforms. You can enable it by running the following commands:
 
 ```
@@ -82,7 +96,7 @@ docker buildx create --use
 docker buildx inspect --bootstrap
 ```
 
-**3. Run ARM64 Image on Docker**
+**4. Run ARM64 Image on Docker**
 Once Buildx is enabled, you can force Docker to run ARM64 images even on an incompatible platform. Use the following command to run the ARM64 image:
 If you are using Docker Compose, you can specify the platform like this:
 
@@ -90,19 +104,12 @@ If you are using Docker Compose, you can specify the platform like this:
 docker compose up --build --platform linux/arm64
 ```
 
-**4. Re-clone the Project**
+**5. Re-clone the Project**
 If you haven't already, clone the project again to make sure you have the latest files:
 
 ```
 git clone https://github.com/morph-l2/run-morph-node.git
 cd run-morph-node
-```
-
-**5. Run Docker Compose for ARM64**
-Finally, run Docker Compose to build and start the containers using ARM64:
-
-```
-docker compose up --build
 ```
 
 **6. Running make run-node**
